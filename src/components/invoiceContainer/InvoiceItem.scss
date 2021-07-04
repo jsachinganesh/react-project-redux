@@ -1,0 +1,84 @@
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.invoiceItem{
+    width: 100%;
+    background: var(--lightBlue);
+    margin: 1rem 0;
+    border-radius: 5px;
+    @include center();
+    justify-content: space-around;
+    
+    color: var(--white);
+    height: 100px;
+    cursor: pointer;
+    transition: all .2s ease;
+
+    .statusInvociesItem,.invoiceItemAmount{
+        width: 100px;
+        text-align: center;
+        word-wrap: break-word;
+    }
+
+    .box1InvoicesItem, .box2InvoicesItem{
+        @include center();
+        justify-content: space-between;
+        div{
+            margin: 0 1rem;
+        }
+
+        .statusInvocies{
+            background: var(--blue);
+            padding: 1rem  0;
+        }
+
+        .paid{
+            
+            color:var(--green);
+        }
+
+        .pending{
+            color: var(--org);
+        }
+    }
+
+
+    overflow: hidden;
+    
+}
+
+.invoiceItem:hover{
+    background: #1e2133;
+}
+
+
+@media only screen and (max-width: 600px){
+    .invoiceItem{
+        
+        height: max-content;
+        width: 90%;
+        margin: 1rem auto;
+        flex-direction: column;
+        font-size: 0.7rem;
+        padding: 1rem 0.5rem;
+        .box1InvoicesItem{
+            .invoiceItemName{
+                text-align: center;
+            }
+            div{
+                max-width: 0 0.5rem;
+            }
+        }
+        .box2InvoicesItem{
+            margin-top: 1rem;
+            .statusInvociesItem{
+                .statusInvocies{
+                    padding: 0.5rem;
+                }
+            }
+        }
+    }
+}

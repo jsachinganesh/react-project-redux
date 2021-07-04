@@ -1,0 +1,42 @@
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.invoiceContainer{
+    // width: 100vw;
+    min-height: 100vh;
+    margin-left: 100px;
+
+
+    background-color: var(--blue);
+
+   @include center();
+   align-items: flex-start;
+
+   .invoiceBox{
+       width: 70%;
+       height: 100%;
+       margin-top: 1rem;
+   }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .invoiceContainer{
+        width: 100vw;
+        padding:70px 1rem 0 1rem;
+
+        margin-left:0;
+        
+        .invoiceBox{
+            width:100vw;
+            margin-top: 0;
+
+        }
+    }
+
+    
+    
+}

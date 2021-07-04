@@ -1,0 +1,36 @@
+<div className="ListItem">
+                        <div className="">List Item</div>
+                        <table className="addItemsBro">
+                            <thead>
+                                <tr>
+                                    <td>Item Name</td>
+                                    <td>QTY</td>
+                                    <td>Price</td>
+                                    {/* <td className="del">Delete</td> */}
+                                </tr>
+                            </thead>
+                            <tbody ref={itemRef}>
+                            <tr>
+                                <td className="itemBroIn">
+                                    <input  type="text" />
+                                </td>
+                                <td className="itemBroIn">
+                                    <input type="number" />
+                                </td>
+                                <td className="itemBroIn">
+                                    <input type="text" />
+                                </td>
+                                <td className="itemBroIn">
+                                    <div className="">X</div>
+                                </td>
+                            </tr> 
+                            {
+                                itemObj.map((el,i)=>{
+                                    return el;
+                                })
+                            }
+                            </tbody>
+
+                        </table>
+                        <button onClick={handleAddItem} type="button">Add Item</button>
+                    </div>

@@ -1,0 +1,121 @@
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.invoicesHeader{
+    @include center();
+    justify-content: space-between;
+    margin-top: 4rem;
+    width: 100%;
+  
+
+    .invoicesName{
+        h1{
+            margin-bottom: 1rem;
+            font-size:3rem;
+        }
+
+        h4{
+            color: var(--whiteLight);
+        }
+    }
+
+    .invoicesBtns{
+        @include center();
+
+        #filter,.newInvoiceBtn{
+            margin: 0 1rem;
+        }
+
+        .newInvoiceBtn{
+            @include center();
+            justify-content: space-between;
+            background: var(--purple);
+            border-radius: 25px;
+            padding: 0.7rem 1rem;
+            cursor: pointer;
+            transition: all .2s ease;
+
+            .plusBtn{
+                margin: 0 0.5rem;
+                margin-right: 1rem;
+                background: var(--white);
+                padding:0.7rem;
+                border-radius: 100%;
+                font-family: Spartan, sans-serif;
+                pointer-events: none;
+
+                @include center();
+            }
+        }
+
+        .newInvoiceBtn:active{
+            transform: translateY(5px);
+            background: var(--purpleHover);
+        }
+
+        select{
+            border:none;
+            padding: 1rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+
+            font-family: Spartan, sans-serif;
+            outline: none;
+            color: var(--white);
+            background:var(--purple);
+        }
+        
+    }
+}
+
+.invoicesItems{
+    width: 100%;
+   
+    display: flex;
+    align-content: flex-start;
+    flex-direction: column;
+    
+    
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .invoicesHeader{
+      flex-direction: column;
+    .invoicesName{
+        text-align: center;
+        margin-bottom: 1rem;
+        h1{
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+    }
+
+    .invoicesBtns{
+        select{
+            padding:0.8rem 0.5rem;
+        }
+
+        .newInvoiceBtn{
+            padding:0.5rem;
+            div{
+                font-size: 0.8rem;
+            }
+        }
+    }
+
+    
+  }
+
+  .invoicesItems{
+    margin-top: 2rem;
+    }
+    
+    
+}

@@ -1,0 +1,80 @@
+.LogOutBar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 100vh;
+
+    background: var(--lightBlue);
+    margin-left: 100px;
+    
+    border: 1px solid var(--blue);
+
+    transition: all .2s ease;
+    transform: translateX(-200%);
+
+    .logClose{
+        font-size: 2rem;
+        position: absolute;
+        top: 2rem;
+        right:2rem;
+        cursor: pointer;
+    }
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .sumAmount{
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .box{
+        display: flex;
+        justify-content: space-evenly;
+        font-size: 1.2rem;
+        .totalP{
+            margin-right: 1rem;
+        }
+
+        .paidA{
+            background: var(--green);
+        }
+
+        .pendA{
+            background: var(--org);
+            
+        }
+    }
+
+    button{
+        padding: 1rem 2rem;
+        border: none;
+        font-family: Spartan, sans-serif;
+        margin-top: 2rem;
+        border-radius: 25px;
+        background: var(--purple);
+        color: white;
+        font-weight: 900;
+
+        transition: all .2s ease;
+        cursor: pointer;
+        
+    }
+    button:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+      }
+
+    
+}
+
+@media only screen and (max-width: 600px){
+    .LogOutBar{
+        width: 100vw;
+        margin-top: 70px;
+    }
+}

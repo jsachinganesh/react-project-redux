@@ -1,0 +1,306 @@
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.invoicePage{
+    // background: var(--lightBlue);
+    min-height: 100vh;
+    
+    max-width: 700px;
+    margin: auto;
+    margin-top: 3rem;
+
+    display: flex;
+    flex-direction: column;
+
+    .invoicePageBoxLink{
+        color: var(--white);
+        margin-bottom: 2rem;
+        font-size: 0.7rem;
+    }
+
+    .invoicePageBoxEdit{
+        background: var(--lightBlue);
+        height:100px;
+        margin-bottom: 2rem;
+        @include center();
+        padding: 1rem 2rem;
+        justify-content: space-between;
+        border-radius: 15px;
+
+        .invoicePageBoxEditStatus{
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: space-between;
+            cursor: context-menu;
+            .text{
+                font-weight: 200;
+            }
+
+
+            .pending{
+                background: #ff910057;
+                color: #FF8F00;
+                font-weight: 800;
+                padding: 1rem;
+            }
+
+            .paid{
+                background: #33d6a075;
+                color: #33D69F;
+                font-weight: 800;
+                padding: 1rem;
+            }
+        }
+        .invoicePageBoxEditStatusBtns{
+            flex-grow: 7;
+            @include center();
+            justify-content: flex-end;
+            button{
+                margin: 0 1rem;
+                border: none;
+                padding: 1rem 1.5rem;
+                border-radius: 25px;
+                font-family: Spartan, sans-serif;
+                cursor: pointer;
+                font-weight: 800;
+            }
+
+            .edit{
+                color: gray;
+            }
+
+            .delete{
+                background: rgb(223, 55, 55);
+                color: white;
+            }
+
+            .markBtn{
+                background: var(--purple);
+                color: white;
+            }
+        }
+    }
+
+    .invoicePageBoxDisplay{
+        background: var(--lightBlue);
+        flex-grow:1;
+        border-radius: 15px;
+        overflow: hidden;
+      
+        padding: 1rem 2rem;
+
+        display: flex;
+        flex-direction: column;
+        .invoicePageBoxDisplayBoxUS{
+            @include center();
+            justify-content: space-between;
+            margin-bottom: 3rem;
+
+            .idAndName{
+                .idhash{
+                    font-weight: 800;
+                }
+
+                .namehash{
+                    font-weight: 200;
+                }
+            }
+
+            .addBro{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                font-weight: 400;
+                font-size: 0.8rem;
+                text-transform: capitalize;
+            }
+
+        }
+
+        .invoicePageBoxDisplayBoxBILLTO{
+            @include center();
+            margin-bottom: 1rem;
+            justify-content: space-between;
+            align-content: flex-start;   
+            align-items: flex-start; 
+            text-transform: capitalize;
+
+            .invoicesBoxDATE{
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                align-items: flex-start;
+                div{
+                    margin: 0.5rem 0;
+                }
+                .date{
+                    font-weight: 800;
+                }
+                .marginDate{
+                    margin-top: 0;
+                }
+            }
+
+            
+
+            .invoicesBoxBILLTO{
+                display: flex;
+                flex-direction: column;
+                div{
+                    margin: 0.2rem 0;
+                }
+                .invoiceName{
+                    font-size: 1.2rem;
+                    font-weight: 800;
+                }
+
+                .addsInvoice{
+                    font-size: 0.7rem;
+                }
+            }
+
+            .invoicesBoxSENT_TO{
+                display: flex;
+                align-items: flex-start;
+                flex-direction: column; 
+                  
+            }
+        }
+
+        .invoicePageBoxDisplayBoxItems{
+            padding: 1rem;
+            background: var(--blue);
+
+            table{
+                width: 100%;
+                .priceMargin{
+                    transform: translateX(1.5rem);
+                }
+
+                
+
+                tr{
+                    
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    align-content: flex-start;
+                    margin-top: 1rem;
+                    
+                }
+
+                td{
+                    text-align: center;
+                    
+                }
+            }
+
+            .amountBRODOWN{
+                display: flex;
+                justify-content: space-between;
+                margin-top: 1rem;
+                font-size: 1.5rem;
+                background: var(--lightBlue);
+            }
+
+
+
+        }
+
+        .featureBox{
+            display: flex;
+            align-items: center;
+            // font-size: 0.8rem;
+            // font-weight: 200;
+            
+            .itemNameBro{
+                flex-grow: 4;
+            }
+            .qtyBro{
+                flex-grow: 1;
+               
+            }
+            .priceBro{
+                flex-grow: 1;
+               
+            }
+            .totalBro{
+                flex-grow: 3;
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+    }
+
+   
+}
+
+
+@media only screen and (max-width: 600px){
+    .invoicePage{
+        width: 100vw;
+
+        .invoicePageBoxEdit{
+            margin: 1rem;
+            height: max-content;
+            // flex-wrap: wrap;
+            flex-direction: column;
+
+            .invoicePageBoxEditStatus{
+                width: 100%;
+            }
+
+            .invoicePageBoxEditStatusBtns{
+                margin-top: 1rem;
+                button{
+                    padding: 0.5rem 0.6rem;
+                }
+                .markBtn{
+                    height: 2rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                  
+                }
+            }
+        }
+
+        .invoicePageBoxDisplay{
+            margin: 1rem;
+            flex-direction: column;
+            .invoicePageBoxDisplayBoxBILLTO{
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                .invoicesBoxDATE{
+                    width: 100%;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: baseline;
+                }
+            }
+
+            .invoicesBoxBILLTO{
+                margin-top: 1rem;
+            }
+
+            .invoicesBoxSENT_TO{
+                margin-top: 1rem;
+                .emailCLient{
+                    font-weight: 800;
+                }
+            }
+
+            .invoicePageBoxDisplayBoxItems{
+                table{
+                    font-size: 0.5rem;
+                }
+            }
+        }
+    }
+
+}

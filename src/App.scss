@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;400;500;600;700;800;900&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding:0;
+  margin:0;
+}
+
+h1,h2,h3,h4,div,p,a{
+  font-family: Spartan, sans-serif;
+}
+
+
+:root{
+  --blue:#1E2139;
+  --lightBlue:#373B53;
+  --purple:#7C5DFA;
+  --purpleHover:#6f5db9;
+  --org:#FF8F00;
+  --green:#33D69F;
+  --white:#fff;
+  --whiteLight:rgb(200, 198, 198);
+}
+
+body{
+  overflow-x: hidden;
+}
+
+.app{
+  background-color: var(--blue);
+  width: 100vw;
+  height: max-content;
+  color: var(--white);
+
+  position: relative;
+
+}
+    

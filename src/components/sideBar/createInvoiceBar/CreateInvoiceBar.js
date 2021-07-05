@@ -1,9 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
 import AddNewInvoiceContext from "../../../context/AddNewInvoiceRef/AddNewInvoiceContext";
-import AddItem from "../../AddItem/AddItem";
+import { AddNewInvoice } from "../../../redux-store/actions/InvoiceAction";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./CreateInvoiceBar.scss";
 
-const CreateInvoiceBar = () => {
+const CreateInvoiceBar = (props) => {
   const addInvoiceRef = React.useContext(AddNewInvoiceContext);
 
   const [adds, setAdds] = React.useState("");
@@ -19,6 +22,8 @@ const CreateInvoiceBar = () => {
   const [isPaid, setisPaid] = React.useState("pending");
   const [desc, setDesc] = React.useState("");
   const [amountToPay, setAmountToPay] = React.useState("");
+  const [date, setDate] = React.useState("");
+  const [lastDate, setLastDate] = React.useState("");
 
   const handleClose = (e) => {
     console.log(window.innerWidth);
@@ -26,13 +31,61 @@ const CreateInvoiceBar = () => {
     addInvoiceRef.current.style.transform = "translateX(-200%)";
   };
 
-  const formSubmitHandler = (e) => {
+  const formSubmitHandler = async (e) => {
     e.preventDefault();
-  };
-  const handleAddItem = (e) => {
-    // setItemObj((p)=>{
-    //     return [...p,<AddItem key={p.length}/>];
-    // })
+
+    // ToastContainer.
+
+    if (isPaid !== "pending") {
+      await setisPaid("paid");
+    }
+
+    if (amountToPay <= 0) {
+      return toast("Amount Should Be More Than 0");
+    }
+
+    props.AddNewInvoice(
+      {
+        adds,
+        city,
+        postCode,
+        country,
+        clientName,
+        clientEmail,
+        clientadds,
+        clientCity,
+        clientPostCode,
+        clientCountry,
+        isPaid,
+        desc,
+        amountToPay,
+        date,
+        lastDate,
+        time:new Date(),
+        id: Math.floor(100000 + Math.random() * 900000),
+      },
+      props.uid
+    );
+
+    console.log("done");
+    toast("New Invoice Created!!");
+    handleClose();
+
+    setAdds("");
+    setCity("");
+    setPostCode("");
+    setCountry("");
+    setClientName("");
+    setClientEmail("");
+    setClientadds("");
+    setClientCity("");
+    setClientPostCode("");
+    setClientCountry("");
+    setisPaid("pending");
+    setDesc("");
+    setAmountToPay("");
+    setDate("");
+    setLastDate("");
   };
 
   return (
@@ -154,11 +207,21 @@ const CreateInvoiceBar = () => {
               <div className="dateClient">
                 <div className="invoiceDateClient">
                   <label htmlFor="inDateClient">Invoice Date</label>
-                  <input id="inDateClient" type="date" />
+                  <input
+                    onChange={(e) => setDate(e.target.value)}
+                    value={date}
+                    id="inDateClient"
+                    type="date"
+                  />
                 </div>
                 <div className="invoiceDateClient">
                   <label htmlFor="paymentClient">Payment Terms</label>
-                  <input id="paymentClient" type="date" />
+                  <input
+                    onChange={(e) => setLastDate(e.target.value)}
+                    value={lastDate}
+                    id="paymentClient"
+                    type="date"
+                  />
                 </div>
               </div>
               <div className="paidServe">
@@ -188,7 +251,7 @@ const CreateInvoiceBar = () => {
                   onChange={(e) => setAmountToPay(e.target.value)}
                   required
                   id="myBillBoxClientAMount"
-                  type="text"
+                  type="number"
                 />
               </div>
             </div>
@@ -205,4 +268,14 @@ const CreateInvoiceBar = () => {
   );
 };
 
-export default CreateInvoiceBar;
+const mapStateToProps = (state) => {
+  return {
+    uid: state?.auth?.user?.uid,
+  };
+};
+
+const mapStateToDispatch = {
+  AddNewInvoice,
+};
+
+export default connect(mapStateToProps, mapStateToDispatch)(CreateInvoiceBar);

@@ -1,7 +1,7 @@
-import { SIGN_UP, SIGN_OUT, LOGIN } from "../actions/Types";
+import { SIGN_UP, SIGN_OUT, LOGIN, ADD_USER } from "../actions/Types";
 
 const initialState = {
-    invoices: null
+    user:null
 };
 
 const AuthReducer = (state = initialState,action) => {
@@ -20,6 +20,12 @@ const AuthReducer = (state = initialState,action) => {
             }
         
         case LOGIN:
+            return {
+                ...state,
+                user:action.payload
+            }
+
+        case ADD_USER:
             return {
                 ...state,
                 user:action.payload

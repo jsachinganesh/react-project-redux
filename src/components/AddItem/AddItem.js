@@ -3,8 +3,8 @@ import './AddItem.scss';
 
 const AddItem = () => {
     const [itemName,setItemName] = React.useState('');
-    const [itemQty,setItemQty] = React.useState(0);
-    const [itemPrice,setItemPrice] = React.useState(0);
+    // const [itemQty,setItemQty] = React.useState(0);
+    // const [itemPrice,setItemPrice] = React.useState(0);
     
     return (
         <tr>

@@ -16,6 +16,7 @@ const SignUp = (props) => {
     const [name,setName] = React.useState('');
     const [password,setPassword] = React.useState('');
 
+    // eslint-disable-next-line no-unused-vars
     const [user, loading, error] = useAuthState(auth);
 
     if(user){

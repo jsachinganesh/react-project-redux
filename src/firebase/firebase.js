@@ -21,12 +21,12 @@ if (!firebase.apps.length) {
 export const db = firebase.firestore();
 export const auth = firebase.auth();
 
-export const texts = db.collection("chats");
+export const USERS_DB = db.collection("users");
 
-export async function sendMessage(room, nameMessages, message) {
-  await db.collection("chats").doc(room).collection(nameMessages).add({
-    text: message,
-  });
-}
+// export async function sendMessage(room, nameMessages, message) {
+//   await db.collection("chats").doc(room).collection(nameMessages).add({
+//     text: message,
+//   });
+// }
 
 export default firebase;

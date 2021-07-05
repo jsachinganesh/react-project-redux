@@ -1,19 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./InvoiceItem.scss";
-const InvoiceItem = () => {
+const InvoiceItem = ({ item }) => {
   return (
-    <Link to="HSS6SQ" style={{ textDecoration: "none" }}>
+    <Link to={item.docID} style={{ textDecoration: "none" }}>
       <div className="invoiceItem">
         <div className="box1InvoicesItem">
-          <div className="invoiceItemID">#HSS6SQ</div>
-          <div className="invoiceItemDATE">Due 19/10/2021</div>
-          <div className="invoiceItemName">James Gun</div>
+          <div className="invoiceItemID">#{item.id}</div>
+          <div className="invoiceItemDATE">Due {item.lastDate}</div>
+          <div className="invoiceItemName">{item.clientName}</div>
         </div>
         <div className="box2InvoicesItem">
-          <div className="invoiceItemAmount">₹ 50000</div>
+          <div className="invoiceItemAmount">₹ {item.amountToPay}</div>
           <div className="statusInvociesItem">
-            <div className="statusInvocies paid">Paid</div>
+            <div className={`statusInvocies ${item.isPaid}`}>{item.isPaid}</div>
           </div>
         </div>
       </div>
